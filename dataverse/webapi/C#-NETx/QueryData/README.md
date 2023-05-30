@@ -26,9 +26,10 @@ This sample uses the common helper code in the [WebAPIService](../WebAPIService)
 
    |Property|Instructions  |
    |---------|---------|
-   |`Url`|The Url for your environment. Replace the placeholder `https://yourorg.api.crm.dynamics.com` value with the value for your environment. See [View developer resources](https://docs.microsoft.com/power-apps/developer/data-platform/view-download-developer-resources) to find this. |
-   |`UserPrincipalName`|Replace the placeholder `you@yourorg.onmicrosoft.com` value with the UPN value you use to access the environment.|
-   |`Password`|Replace the placeholder `yourPassword` value with the password you use.|
+   |`Url`|The Url for your environment. |
+   |`ClientId`||
+   |`TenantId`||
+2. |`SecretValue`||
 
 1. Save the `appsettings.json` file
 1. Press F5 to run the sample.

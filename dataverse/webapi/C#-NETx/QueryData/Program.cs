@@ -17,7 +17,7 @@ namespace QueryData
             var service = new Service(config);
 
             List<EntityReference> recordsToDelete = new();
-            bool deleteCreatedRecords = true;
+            bool deleteCreatedRecords = false;
 
             Console.WriteLine("--Starting Query Data sample--");
 
@@ -870,6 +870,70 @@ namespace QueryData
             #endregion Section 10: Delete sample records
 
             Console.WriteLine("--Query Data sample complete--");
+            
+            Console.WriteLine("--Create patients--");
+            EntityReference patient1Ref = await service.Create("patients", new JObject
+            {
+                { "Id", 1 },
+                { "Name", "John Doe" },
+                { "Age", 30 }
+            });
+            EntityReference patient2Ref = await service.Create("patients", new JObject
+            {
+                { "Id", 2 },
+                { "Name", "Jane Smith" },
+                { "Age", 45 }
+            });
+            EntityReference patient3Ref = await service.Create("patients", new JObject
+            {
+                { "Id", 3 },
+                { "Name", "Alice Johnson" },
+                { "Age", 50 }
+            });
+            
+            RetrieveMultipleResponse patientCollection =
+                await service.RetrieveMultiple(queryUri: "patients?" +
+                                                         "$select=Id,Name,Age",
+                    includeAnnotations: true);
+
+            WriteContactResultsTable(
+                message: "All patients :",
+                collection: patientCollection.Records);
+        }
+
+        private static JArray GetPatients()
+        {
+            // Create an empty JArray
+            var patientsArray = new JArray();
+
+            // Create three JObject instances representing patients
+            var patient1 = new JObject
+            {
+                { "Id", 1 },
+                { "Name", "John Doe" },
+                { "Age", 30 }
+            };
+
+            var patient2 = new JObject
+            {
+                { "Id", 2 },
+                { "Name", "Jane Smith" },
+                { "Age", 45 }
+            };
+
+            var patient3 = new JObject
+            {
+                { "Id", 3 },
+                { "Name", "Alice Johnson" },
+                { "Age", 50 }
+            };
+
+            // Add the patient JObject instances to the patientsArray
+            patientsArray.Add(patient1);
+            patientsArray.Add(patient2);
+            patientsArray.Add(patient3);
+
+            return patientsArray;
         }
 
         /// <summary>

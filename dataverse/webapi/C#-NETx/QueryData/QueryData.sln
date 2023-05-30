@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryData", "QueryData.cspr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPIService", "..\WebAPIService\WebAPIService.csproj", "{575CCF9E-DAB0-4557-8154-FE3BD1D67998}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataverseWebApplication", "..\DataverseWebApplication\DataverseWebApplication.csproj", "{D5B92F07-AADB-4AC1-A062-7D49D6382F78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataverseBlazorServerApplication", "..\DataverseBlazorServerApplication\DataverseBlazorServerApplication.csproj", "{A797B838-4157-40EC-9A30-A84C2225E05F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataverseAPI", "..\DataverseAPI\DataverseAPI.csproj", "{A964C177-E375-48E2-8D63-6F754A936767}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{575CCF9E-DAB0-4557-8154-FE3BD1D67998}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{575CCF9E-DAB0-4557-8154-FE3BD1D67998}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{575CCF9E-DAB0-4557-8154-FE3BD1D67998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5B92F07-AADB-4AC1-A062-7D49D6382F78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5B92F07-AADB-4AC1-A062-7D49D6382F78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5B92F07-AADB-4AC1-A062-7D49D6382F78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5B92F07-AADB-4AC1-A062-7D49D6382F78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A797B838-4157-40EC-9A30-A84C2225E05F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A797B838-4157-40EC-9A30-A84C2225E05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A797B838-4157-40EC-9A30-A84C2225E05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A797B838-4157-40EC-9A30-A84C2225E05F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A964C177-E375-48E2-8D63-6F754A936767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A964C177-E375-48E2-8D63-6F754A936767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A964C177-E375-48E2-8D63-6F754A936767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A964C177-E375-48E2-8D63-6F754A936767}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

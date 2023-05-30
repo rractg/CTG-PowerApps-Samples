@@ -51,6 +51,7 @@ namespace BlazorCDS
 
                 // Add access to Global Discovery Service to the scope of the access token when the user signs in                
                 options.ProviderOptions.DefaultAccessTokenScopes.Add($"{gdsResourceUrl}/user_impersonation");
+                
             });
 
             builder.Services.AddSingleton(typeof(AppState), new AppState());

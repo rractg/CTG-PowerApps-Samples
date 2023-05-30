@@ -2,6 +2,7 @@
 using Microsoft.Identity.Client;
 using System.Net;
 using System.Security;
+using Newtonsoft.Json.Linq;
 
 namespace PowerApps.Samples
 {
@@ -46,12 +47,29 @@ namespace PowerApps.Samples
 
         }
 
+        internal static async Task<string> GetToken()
+        {
+            var url = $"https://login.windows.net/{appSettings["TenantId"]}/oauth2/token";
+
+            var cl = new HttpClient();
+            var nvc = new List<KeyValuePair<string, string>>();
+            nvc.Add(new KeyValuePair<string, string>("grant_type", "client_credentials"));
+            nvc.Add(new KeyValuePair<string, string>("client_id", appSettings["ClientId"]));
+            nvc.Add(new KeyValuePair<string, string>("client_secret", appSettings["SecretValue"]));
+            nvc.Add(new KeyValuePair<string, string>("resource", appSettings["Url"]));
+            var req = new HttpRequestMessage(HttpMethod.Post, url) { Content = new FormUrlEncodedContent(nvc) };
+            using HttpResponseMessage response = await cl.SendAsync(req);
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            JObject jObject = JObject.Parse(jsonResponse);
+            return jObject.GetValue("access_token").Value<string>();
+        }
+
         /// <summary>
         /// Returns an Access token for the app based on username and password from appsettings.json
         /// </summary>
         /// <returns>An Access token</returns>
         /// <exception cref="Exception"></exception>
-        internal static async Task<string> GetToken()
+        internal static async Task<string> GetTokenByUser()
         {
             List<string> scopes = new() { $"{appSettings["Url"]}/user_impersonation" };
 

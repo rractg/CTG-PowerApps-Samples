@@ -1,0 +1,69 @@
+﻿@page "/activeaccounts"
+@using DataverseBlazorServerApplication.Data
+@using Newtonsoft.Json.Linq
+@inject ActiveAccountsService ActiveAccountsService
+
+<PageTitle>Active accounts</PageTitle>
+
+<h1>Active accounts</h1>
+
+@if (activeaccounts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var activeaccount in activeaccounts)
+            {
+                <tr>
+                    <td>@formatValue(activeaccount, "name")</td>
+                    <td>@formatValue(activeaccount, "_primarycontactid_value")</td>
+                    <td>@formatValue(activeaccount, "telephone1")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private String formatValue(JToken entity, String prop)
+    {
+        string propValue;
+        string formattedProp = prop + "@OData.Community.Display.V1.FormattedValue";
+        if (null != entity[formattedProp])
+        {
+            propValue = entity[formattedProp].ToString();
+        }
+        else
+        {
+            if (null != entity[prop])
+            {
+                propValue = entity[prop].ToString();
+            }
+            else
+            {
+                propValue = "NULL";
+            }
+        }
+        return propValue;
+    }
+
+    private JArray? activeaccounts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var retrieveMultipleResponseTask = await ActiveAccountsService.GetActiveAccountsAsync();
+
+        activeaccounts = retrieveMultipleResponseTask.Records;
+    }
+}
