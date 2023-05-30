@@ -29,7 +29,7 @@ This sample uses the common helper code in the [WebAPIService](../WebAPIService)
    |`Url`|The Url for your environment. |
    |`ClientId`||
    |`TenantId`||
-2. |`SecretValue`||
+   |`SecretValue`||
 
 1. Save the `appsettings.json` file
 1. Press F5 to run the sample.
